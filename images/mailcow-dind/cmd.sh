@@ -128,6 +128,7 @@ init_mailcow() {
 
 start_mailcow() {
   cd /mailcow
+  docker-compose pull
   docker-compose up -d
   docker-compose logs -f
 }
@@ -141,7 +142,7 @@ fi
 
 if [ -f /mailcow/mailcow.conf ]; then
   echo "Mailcow configuration exists probably from another installation. Attempting startup."
-  start_mailcow  
+  start_mailcow
 else
   init_mailcow
   start_mailcow
